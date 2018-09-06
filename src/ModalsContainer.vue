@@ -22,6 +22,7 @@ import { generateId } from './util'
 const PREFIX = '_dynamic_modal_'
 
 export default {
+  name: 'modals-container',
   data () {
     return {
       modals: []
