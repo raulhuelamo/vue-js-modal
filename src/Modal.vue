@@ -47,7 +47,7 @@ import { inRange, createModalEvent, getMutationObserver } from './util'
 import { parseNumber, validateNumber } from './parser'
 
 export default {
-  name: 'VueJsModal',
+  name: 'vue-js-modal',
   props: {
     name: {
       required: true,
@@ -171,7 +171,9 @@ export default {
         height: 0
       },
 
-      mutationObserver: null
+      mutationObserver: null,
+
+      overrideClickToClose: null
     }
   },
   created () {
@@ -341,9 +343,16 @@ export default {
         width: this.trueModalWidth + 'px',
         height: this.isAutoHeight ? 'auto' : this.trueModalHeight + 'px'
       }
+    },
+    trueClickToClose () {
+      if (typeof this.overrideClickToClose === 'boolean') return this.overrideClickToClose
+      else return this.clickToClose
     }
   },
   methods: {
+    mutateClickToClose (val) {
+      this.overrideClickToClose = val
+    },
     handleToggleEvent (name, state, params) {
       if (this.name === name) {
         const nextState = typeof state === 'undefined'
