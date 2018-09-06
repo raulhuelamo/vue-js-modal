@@ -224,7 +224,7 @@ export default {
       }
     }
 
-    if (this.clickToClose) {
+    if (this.trueClickToClose) {
       window.addEventListener('keyup', this.handleEscapeKeyUp)
     }
   },
@@ -235,7 +235,7 @@ export default {
     Modal.event.$off('toggle', this.handleToggleEvent)
     window.removeEventListener('resize', this.handleWindowResize)
 
-    if (this.clickToClose) {
+    if (this.trueClickToClose) {
       window.removeEventListener('keyup', this.handleEscapeKeyUp)
     }
     /**
@@ -493,7 +493,7 @@ export default {
      * Event handler that is triggered when background overlay is clicked
      */
     handleBackgroundClick () {
-      if (this.clickToClose) {
+      if (this.trueClickToClose) {
         this.toggle(false)
       }
     },

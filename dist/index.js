@@ -482,11 +482,11 @@
                         _this.updateRenderedHeight();
                     }));
                 }
-                this.clickToClose && window.addEventListener("keyup", this.handleEscapeKeyUp);
+                this.trueClickToClose && window.addEventListener("keyup", this.handleEscapeKeyUp);
             },
             beforeDestroy: function() {
                 _index2.default.event.$off("toggle", this.handleToggleEvent), window.removeEventListener("resize", this.handleWindowResize), 
-                this.clickToClose && window.removeEventListener("keyup", this.handleEscapeKeyUp), 
+                this.trueClickToClose && window.removeEventListener("keyup", this.handleEscapeKeyUp), 
                 this.scrollable && document.body.classList.remove("v--modal-block-scroll");
             },
             computed: {
@@ -590,7 +590,7 @@
                     return selector ? this.$refs.overlay.querySelector(selector) : null;
                 },
                 handleBackgroundClick: function() {
-                    this.clickToClose && this.toggle(!1);
+                    this.trueClickToClose && this.toggle(!1);
                 },
                 startOpeningModal: function() {
                     var _this2 = this;
