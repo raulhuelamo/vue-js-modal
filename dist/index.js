@@ -346,7 +346,7 @@
             return target;
         }, _index = __webpack_require__(4), _index2 = _interopRequireDefault(_index), _Resizer = __webpack_require__(16), _Resizer2 = _interopRequireDefault(_Resizer), _util = __webpack_require__(1), _parser = __webpack_require__(12);
         exports.default = {
-            name: "VueJsModal",
+            name: "vue-js-modal",
             props: {
                 name: {
                     required: !0,
@@ -465,7 +465,8 @@
                         width: 0,
                         height: 0
                     },
-                    mutationObserver: null
+                    mutationObserver: null,
+                    overrideClickToClose: null
                 };
             },
             created: function() {
@@ -525,9 +526,15 @@
                         width: this.trueModalWidth + "px",
                         height: this.isAutoHeight ? "auto" : this.trueModalHeight + "px"
                     };
+                },
+                trueClickToClose: function() {
+                    return "boolean" == typeof this.overrideClickToClose ? this.overrideClickToClose : this.clickToClose;
                 }
             },
             methods: {
+                mutateClickToClose: function(val) {
+                    this.overrideClickToClose = val;
+                },
                 handleToggleEvent: function(name, state, params) {
                     if (this.name === name) {
                         var nextState = void 0 === state ? !this.visible : state;
@@ -667,6 +674,7 @@
             return target;
         }, _util = __webpack_require__(1);
         exports.default = {
+            name: "modals-container",
             data: function() {
                 return {
                     modals: []
